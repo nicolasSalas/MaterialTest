@@ -22,6 +22,10 @@ import { StepperComponent } from './stepper/stepper.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatMenuModule } from '@angular/material/menu';
+import { TableComponent } from './table/table.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
 
 @NgModule({
   declarations: [
@@ -29,7 +33,8 @@ import { MatMenuModule } from '@angular/material/menu';
     InicioComponent,
     ContactComponent,
     StepperComponent,
-    DashboardComponent
+    DashboardComponent,
+    TableComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +53,10 @@ import { MatMenuModule } from '@angular/material/menu';
     MatStepperModule,
     AppRoutingModule,
     MatGridListModule,
-    MatMenuModule
+    MatMenuModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule
   ],
   providers: [],
   bootstrap: [AppComponent]

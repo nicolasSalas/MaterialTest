@@ -14,6 +14,7 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
   }]
 })
 export class StepperComponent implements OnInit {
+  writing = false;
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
 
@@ -26,5 +27,25 @@ export class StepperComponent implements OnInit {
     this.secondFormGroup = this._formBuilder.group({
       secondCtrl: ['', Validators.required]
     });
+    console.log('onInit',this)
+
   }
+  
+  ngClick(value : String){
+    console.log('Click1',this)
+    this.writing = false;
+    console.log('Click2',this)
+    var name = this.firstFormGroup.value.firstCtrl;
+    var address = this.secondFormGroup.value.secondCtrl;
+    if(value == 'done'){
+      console.log('Nombre: ',name, ' ', 'Direccion: ',address)
+    }
+
+  }
+
+  onKey(event: any){
+    this.writing = true
+    console.log('onKey',this)
+  }
+  
 }

@@ -4,12 +4,14 @@ import { InicioComponent } from './inicio/inicio.component';
 import { StepperComponent } from './stepper/stepper.component';
 import { ContactComponent } from './contact/contact.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { TableComponent } from './table/table.component';
 
 const routes: Routes = [
   { path: 'Inicio', component: InicioComponent },
   { path: 'Stepper', component: StepperComponent },
   { path: 'Contact', component: ContactComponent },
   { path: 'Dashboard', component: DashboardComponent },
+  { path: 'Table', component: TableComponent },
   { path: '',   redirectTo: '/', pathMatch: 'full' } // redirect to `/`
   //{ path: '**', component: PageNotFoundComponent },  // Wildcard route for a 404 page];
 ]

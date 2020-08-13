@@ -5,11 +5,11 @@
         <ng-template matStepLabel>Fill out your name</ng-template>
         <mat-form-field>
           <mat-label>Name</mat-label>
-          <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
+          <input matInput placeholder="Nombre Apellido" formControlName="firstCtrl" (keyup)="onKey($event)" required >
         </mat-form-field>
         <div>
           <p>Go to a different step to see the error state</p>
-          <button mat-button matStepperNext>Next</button>
+          <button [disabled]="writing == false || !firstFormGroup.value.firstCtrl" mat-button matStepperNext (click)="ngClick('name')">Next</button>
         </div>
       </form>
     </mat-step>
@@ -18,13 +18,12 @@
         <ng-template matStepLabel>Fill out your address</ng-template>
         <mat-form-field>
           <mat-label>Address</mat-label>
-          <input matInput placeholder="Ex. 1 Main St, New York, NY" formControlName="secondCtrl"
-                 required>
+          <input matInput placeholder="Ex. 1 Main St, New York, NY" formControlName="secondCtrl"  (keyup)="onKey($event)" required>
         </mat-form-field>
         <div>
           <p>Go to a different step to see the error state</p>
           <button mat-button matStepperPrevious>Back</button>
-          <button mat-button matStepperNext>Next</button>
+          <button mat-button matStepperNext [disabled]="writing == false || !secondFormGroup.value.secondCtrl" (click)="ngClick('address')" >Next</button>
         </div>
       </form>
     </mat-step>
@@ -34,6 +33,7 @@
       <div>
         <button mat-button matStepperPrevious>Back</button>
         <button mat-button (click)="stepper.reset()">Reset</button>
+        <button mat-button (click)="ngClick('done')">Done</button>
       </div>
     </mat-step>
   </mat-horizontal-stepper>
