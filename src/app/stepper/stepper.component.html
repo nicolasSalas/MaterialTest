@@ -1,39 +1,38 @@
-<p>stepper works!</p>
-<mat-horizontal-stepper #stepper>
-    <mat-step [stepControl]="firstFormGroup" errorMessage="Name is required.">
+<mat-horizontal-stepper #stepper [linear]="true" >
+    <mat-step [stepControl]="firstFormGroup"  errorMessage="Escribe tu nombre!.">
       <form [formGroup]="firstFormGroup">
-        <ng-template matStepLabel>Fill out your name</ng-template>
+        <ng-template matStepLabel>Escribe tu nombre y apellido</ng-template>
         <mat-form-field>
-          <mat-label>Name</mat-label>
+          <mat-label>Nombre y Apellido</mat-label>
           <input matInput placeholder="Nombre Apellido" formControlName="firstCtrl" (keyup)="onKey($event)" required >
         </mat-form-field>
         <div>
-          <p>Go to a different step to see the error state</p>
-          <button [disabled]="writing == false || !firstFormGroup.value.firstCtrl" mat-button matStepperNext (click)="ngClick('name')">Next</button>
+          <!-- <p>Go to a different step to see the error state</p> -->
+          <button [disabled]="!firstFormGroup.value.firstCtrl" mat-button matStepperNext (click)="ngClick('name')">Siguiente</button>
         </div>
       </form>
     </mat-step>
-    <mat-step [stepControl]="secondFormGroup" errorMessage="Address is required.">
+    <mat-step [stepControl]="secondFormGroup" errorMessage="Escribe tu direccion!." [completed]="stepName == true">
       <form [formGroup]="secondFormGroup">
-        <ng-template matStepLabel>Fill out your address</ng-template>
+        <ng-template matStepLabel>Escribe tu direccion</ng-template>
         <mat-form-field>
-          <mat-label>Address</mat-label>
-          <input matInput placeholder="Ex. 1 Main St, New York, NY" formControlName="secondCtrl"  (keyup)="onKey($event)" required>
+          <mat-label>Direccion</mat-label>
+          <input matInput placeholder="Psj Antares 123" formControlName="secondCtrl"  (keyup)="onKey($event)" required>
         </mat-form-field>
         <div>
-          <p>Go to a different step to see the error state</p>
-          <button mat-button matStepperPrevious>Back</button>
-          <button mat-button matStepperNext [disabled]="writing == false || !secondFormGroup.value.secondCtrl" (click)="ngClick('address')" >Next</button>
+          <!-- <p>Go to a different step to see the error state</p> -->
+          <button mat-button matStepperPrevious>Atras</button>
+          <button mat-button matStepperNext [disabled]="!secondFormGroup.value.secondCtrl" (click)="ngClick('address')" >Siguiente</button>
         </div>
       </form>
     </mat-step>
-    <mat-step>
-      <ng-template matStepLabel>Done</ng-template>
-      <p>You are now done.</p>
+    <mat-step [completed]="stepAddress == true && stepName == true">
+      <ng-template matStepLabel>Fin</ng-template>
+      <p>{{nameDisplay}} {{addressDisplay}}</p>
       <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button (click)="stepper.reset()">Reset</button>
-        <button mat-button (click)="ngClick('done')">Done</button>
+        <button mat-button matStepperPrevious>Atras</button>
+        <button mat-button (click)="stepper.reset()">Nuevo</button>
+        <button mat-button [disabled]="!nameDisplay || !addressDisplay" (click)="ngClick('done')">Finalizar</button>
       </div>
     </mat-step>
   </mat-horizontal-stepper>

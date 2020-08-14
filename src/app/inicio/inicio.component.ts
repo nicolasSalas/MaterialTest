@@ -14,6 +14,8 @@ export class InicioComponent {
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset).pipe(map(result => result.matches),
   shareReplay());
+  showFiller = false;
+
 
   constructor(private breakpointObserver: BreakpointObserver,private route: ActivatedRoute) {}
 

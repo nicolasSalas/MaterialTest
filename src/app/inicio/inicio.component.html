@@ -1,24 +1,19 @@
-<!-- <h1>Angular Router App</h1>
- --><!-- This nav gives you links to click, which tells the router which route to use (defined in the routes constant in  AppRoutingModule) -->
-<!-- <nav>
-  <ul>
-    <li><a routerLink="/Contact" routerLinkActive="active">First Component</a></li>
-    <li><a routerLink="/Stepper" routerLinkActive="active">Second Component</a></li>
-  </ul>
-</nav> -->
-<!-- The routed views render in the <router-outlet>-->
+
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav #drawer class="sidenav" fixedInViewport
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
       [mode]="(isHandset$ | async) ? 'over' : 'side'"
       [opened]="(isHandset$ | async) === false">
-    <mat-toolbar>Menu</mat-toolbar>
+    <mat-toolbar style="background-color: lightcoral; color: aliceblue;">Menu</mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item  routerLink="/">Home</a>
+      <!-- <a mat-list-item  routerLink="/">Home</a> -->
       <!-- <a mat-list-item  routerLink="/Dashboard">Dashboard</a> -->
-      <a mat-list-item  routerLink="/Table">Table</a>
+      <a mat-list-item  routerLink="/Table">
+        <span class="material-icons" style="margin-right: 5px;"> assignment </span>Datos</a>
+      
       <!-- <a mat-list-item  routerLink="/Contact">Contact</a> -->
-      <a mat-list-item  routerLink="/Stepper">Stepper</a>
+      <a mat-list-item  routerLink="/Stepper"><span class="material-icons"style="margin-right: 4px;">face</span>Agregar Personas</a>
+      <!-- <a mat-list-item  routerLink="/Dialog">Dialog</a> -->
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
